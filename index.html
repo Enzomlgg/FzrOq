@@ -1,0 +1,131 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        h1 {
+            font-size: 22px;
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            color: #666;
+        }
+        .button {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .button.no {
+            background-color: #dc3545;
+        }
+        .button.no:hover {
+            background-color: #c82333;
+        }
+        body.bg-img1 {
+            background-image: url("Img1.png");
+            background-size: cover;
+            background-position: center;
+        }
+        body.bg-img2 {
+            background-image: url("Img2.png");
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+
+<div id="modal" class="modal">
+    <div class="modal-content" id="modal-content">
+        <h1>Convite</h1>
+        <p>Sei que tu falou que não daria certo e tals, e respeito isso. Porém assim... toparia tomar um sorvete ou algo do tipo na amizade ou sei lá?</p>
+        <button class="button yes" onclick="handleYes()">Sim</button>
+        <button class="button no" onclick="handleNo()">Não</button>
+    </div>
+</div>
+
+<script>
+    window.onload = function() {
+        document.getElementById('modal').style.display = 'flex';
+    };
+
+    function handleYes() {
+        document.body.classList.add("bg-img1");
+        document.getElementById('modal-content').innerHTML = `
+            <h1>Resposta</h1>
+            <p>Só falar o dia e horário que for melhor para ti 😅</p>
+            <button class="button" onclick="showNote()">Nota</button>
+            <button class="button" onclick="closeModal()">Fechar</button>
+        `;
+    }
+
+    function showNote() {
+        alert("Nota: vou mentir não, foi difícil criar coragem em 😅");
+    }
+
+    function handleNo() {
+        document.body.classList.add("bg-img2");
+        document.getElementById('modal-content').innerHTML = `
+            <h1>Ai me complicou kkkkkkkkk</h1>
+            <p>Fazer o que, pelo menos foi inesperado isso kkkkkkkkkk 🤣</p>
+            <button class="button" onclick="closeModal()">Fechar</button>
+        `;
+    }
+
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
